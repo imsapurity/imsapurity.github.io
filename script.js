@@ -37,12 +37,15 @@ function submitItDad(year){
     console.log(score);
     console.log(year);
     
-    ga('send', {
-        hitType: 'event',
-        eventCategory: 'Score',
-        eventAction: 'Total',
-        eventLabel: year,
-        eventValue: score
+    ga('send', 'event', {
+        'eventCategory': 'Results',
+        'eventAction': 'Year: Score',
+        'eventLabel': year + ':' +score
+    });
+    request = $.ajax({
+        url: "https://script.google.com/macros/s/AKfycbxSPvtqLCtPJy6hTqbaJclXDcl6UnBTG6qgNTjShl-05I_Qbww/exec",
+        type: "post",
+        data: year
     });
 }
 
