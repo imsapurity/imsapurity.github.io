@@ -31,12 +31,19 @@ function submitItDad(year){
     span = document.getElementById("total");
     txt = document.createTextNode(score+'%');
     span.innerText = txt.textContent;
+    document.getElementById("questions").style.display = "none";
+    document.getElementById("results").style.display = "block";
     
     console.log(score);
     console.log(year);
     
-    document.getElementById("questions").style.display = "none";
-    document.getElementById("results").style.display = "block";
+    ga('send', {
+        hitType: 'event',
+        eventCategory: 'Score',
+        eventAction: 'Total',
+        eventLabel: year,
+        eventValue: score
+    });
 }
 
 ////
